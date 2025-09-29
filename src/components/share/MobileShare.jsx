@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 const MobileShare = () => {
   const [isClicked, setIsClicked] = useState(false);
-  
+
 const whatsappMessage = encodeURIComponent(
-  "I found this amazing affiliate dashboard, check it out: https://seosaurus.in/tools/affiliate-dashboard/"
+  "I found this amazing affiliate dashboard tool, check it out: https://seosaurus.in/tools/affiliate-dashboard/"
 );
 
 const toolUrl = "https://seosaurus.in/tools/affiliate-dashboard/";
