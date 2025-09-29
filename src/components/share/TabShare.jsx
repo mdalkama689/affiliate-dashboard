@@ -7,10 +7,10 @@ import { MdOutlineInfo } from "react-icons/md";
 const TabShare = () => {
   const [isHovered, setIsHovered] = useState(false);
 const whatsappMessage = encodeURIComponent(
-  "I found this amazing audio toolkit, check it out: https://seosaurus.in/tools/audio-toolkit/"
+  "I found this amazing affiliate dashboard, check it out: https://seosaurus.in/tools/affiliate-dashboard/"
 );
 
-const toolUrl = "hhttps://seosaurus.in/tools/audio-toolkit/";
+const toolUrl = "https://seosaurus.in/tools/affiliate-dashboard/";
 
 
   return (
