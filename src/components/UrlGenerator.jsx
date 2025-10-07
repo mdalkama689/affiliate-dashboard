@@ -59,13 +59,9 @@ const [generatedUrl, setGeneratedUrl] = useState('');
  
 
   useEffect(() => {
-
-    initializeParams();
-
+ initializeParams();
     setBaseUrl('');
-
     setGeneratedUrl('');
-
     setShortenedUrl('');
 
   }, [project]);
@@ -79,8 +75,6 @@ newParams[index][field] = value;
 setCustomParams(newParams);
   };
 
-
- 
 
   const shortenWithBitly = async (longUrl) => {
 
@@ -129,8 +123,6 @@ setCustomParams(newParams);
   };
 
 
- 
-
   const shortenWithCustomDomain = (longUrl) => {
 
     const hash = btoa(longUrl).substring(0, 6);
@@ -150,11 +142,7 @@ setCustomParams(newParams);
         description: "Please enter a base URL to generate the affiliate link." });
  return;
     }
-
-
- 
-
-    try {
+ try {
 
       const url = new URL(baseUrl);
 
