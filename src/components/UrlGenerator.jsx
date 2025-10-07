@@ -216,33 +216,18 @@ setCustomParams(newParams);
   };
 
 
-  const copyToClipboard = async (text) => {
-console.log(" i am inside of copyToClipboard but outside of try block")
+  const copyToClipboard = async (text) => { 
     try {
-console.log(" i am inside of copyToClipboard  and before of navigator ")
-
 const isCopy  = copy(text)
 
 if(isCopy){
       toast.success("📋 Copied!", 
         {description: "URL has been copied to your clipboard." });
 }
+} catch (error) {
 
-      // await navigator.clipboard.writeText(text);
-
-      console.log(" i am inside of copyToClipboard and after of navigator ")
-
-
-
-
-
-        console.log("i am inside of copyToClipboard and after toast ")
-
-
-    } catch (error) {
-console.log(" inside the clipboard and catch blobk before error of toast ")
       toast.error("❌ Copy Failed", {description: "Unable to copy to clipboard." });
-console.log(" inside the clipboard and catch blobk after error of toast ")
+ 
 
     }
 
