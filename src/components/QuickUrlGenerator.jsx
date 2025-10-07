@@ -237,7 +237,7 @@ toast.success("📋 Copied!", {
     >
       <h2 className="text-2xl font-bold text-white flex items-center gap-3 mb-4">
         <Zap className="w-7 h-7 text-yellow-400" />
-        Quick URL Generator || 
+        Quick URL Generator 
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
