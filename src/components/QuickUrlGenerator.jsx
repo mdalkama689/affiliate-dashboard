@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-
+import copy from 'copy-to-clipboard'
 import { motion } from "framer-motion";
-
 import {
   Link,
   Zap,
@@ -14,11 +13,8 @@ import {
   MessageSquare,
   Mail,
 } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-
 import { Input } from "@/components/ui/input";
-
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -31,13 +27,9 @@ import { toast } from "sonner";
 
 const QuickUrlGenerator = ({ projects, bitlyApiKey }) => {
   const [baseUrl, setBaseUrl] = useState("");
-
   const [selectedProjectId, setSelectedProjectId] = useState("");
-
   const [generatedUrl, setGeneratedUrl] = useState("");
-
   const [shortenedUrl, setShortenedUrl] = useState("");
-
   const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
@@ -188,15 +180,16 @@ const QuickUrlGenerator = ({ projects, bitlyApiKey }) => {
   };
 
   const copyToClipboard = async (text) => {
-    if (!text) return;
-
-    await navigator.clipboard.writeText(text);
-toast.success("📋 Copied!", {
-  description: "URL has been copied to your clipboard."
-})
-
-  
-  };
+    try {
+  const isCopy  = copy(text)
+   if(isCopy){
+        toast.success("📋 Copied!", 
+          {description: "URL has been copied to your clipboard." });
+  }
+  } catch (error) {
+   toast.error("❌ Copy Failed", {description: "Unable to copy to clipboard." }); 
+      }
+};
 
   const getShareUrl = (platform, url, text) => {
     const encodedUrl = encodeURIComponent(url);

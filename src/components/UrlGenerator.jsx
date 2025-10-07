@@ -225,12 +225,8 @@ if(isCopy){
         {description: "URL has been copied to your clipboard." });
 }
 } catch (error) {
-
-      toast.error("❌ Copy Failed", {description: "Unable to copy to clipboard." });
- 
-
+ toast.error("❌ Copy Failed", {description: "Unable to copy to clipboard." }); 
     }
-
   };
 
 
