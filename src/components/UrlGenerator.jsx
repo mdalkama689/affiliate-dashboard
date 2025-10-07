@@ -1,30 +1,23 @@
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-
 import { Copy, ExternalLink, X, Link, Zap, RefreshCw, Plus, Trash2, Loader2 } from 'lucide-react';
-
 import { Button } from '@/components/ui/button';
-
 import { Input } from '@/components/ui/input';
-
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
+import copy from 'copy-to-clipboard'
 
 
-
- 
 
 const UrlGenerator = ({ project, onClose, bitlyApiKey }) => {
 
+  const ref = useRef()
+
+
   const [baseUrl, setBaseUrl] = useState('');
-
-  const [generatedUrl, setGeneratedUrl] = useState('');
-
+const [generatedUrl, setGeneratedUrl] = useState('');
   const [shortenedUrl, setShortenedUrl] = useState('');
-
   const [customParams, setCustomParams] = useState([]);
-
   const [isShortening, setIsShortening] = useState(false);
 
 
@@ -81,13 +74,9 @@ const UrlGenerator = ({ project, onClose, bitlyApiKey }) => {
  
 
   const handleParamChange = (index, field, value) => {
-
-    const newParams = [...customParams];
-
-    newParams[index][field] = value;
-
-    setCustomParams(newParams);
-
+ const newParams = [...customParams];
+newParams[index][field] = value;
+setCustomParams(newParams);
   };
 
 
@@ -152,9 +141,6 @@ const UrlGenerator = ({ project, onClose, bitlyApiKey }) => {
     return `https://${project.customDomain}/${hash}`;
 
   };
-
-
- 
 
   const generateUrl = async () => {
 
@@ -230,20 +216,24 @@ const UrlGenerator = ({ project, onClose, bitlyApiKey }) => {
   };
 
 
- 
-
   const copyToClipboard = async (text) => {
 console.log(" i am inside of copyToClipboard but outside of try block")
     try {
 console.log(" i am inside of copyToClipboard  and before of navigator ")
 
-      await navigator.clipboard.writeText(text);
+const isCopy  = copy(text)
+
+if(isCopy){
+      toast.success("📋 Copied!", 
+        {description: "URL has been copied to your clipboard." });
+}
+
+      // await navigator.clipboard.writeText(text);
 
       console.log(" i am inside of copyToClipboard and after of navigator ")
 
 
-      toast.success("📋 Copied!", 
-        {description: "URL has been copied to your clipboard." });
+
 
 
         console.log("i am inside of copyToClipboard and after toast ")
@@ -277,7 +267,6 @@ console.log(" inside the clipboard and catch blobk after error of toast ")
   const removeParam = (index) => setCustomParams(customParams.filter((_, i) => i !== index));
 
 
- 
 
   return (
 
@@ -406,7 +395,7 @@ console.log(" inside the clipboard and catch blobk after error of toast ")
 
                 <div className="flex-1 bg-white/10 rounded-lg p-3 border border-white/20">
 
-                  <p className="text-white text-sm break-all">{generatedUrl}</p>
+                  <p className="text-white text-sm break-all" >{generatedUrl}</p>
 
                 </div>
 
