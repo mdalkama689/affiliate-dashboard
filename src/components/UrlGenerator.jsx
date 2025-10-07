@@ -233,17 +233,26 @@ const UrlGenerator = ({ project, onClose, bitlyApiKey }) => {
  
 
   const copyToClipboard = async (text) => {
-
+console.log(" i am inside of copyToClipboard but outside of try block")
     try {
+console.log(" i am inside of copyToClipboard  and before of navigator ")
 
       await navigator.clipboard.writeText(text);
+
+      console.log(" i am inside of copyToClipboard and after of navigator ")
+
 
       toast.success("📋 Copied!", 
         {description: "URL has been copied to your clipboard." });
 
-    } catch (error) {
 
+        console.log("i am inside of copyToClipboard and after toast ")
+
+
+    } catch (error) {
+console.log(" inside the clipboard and catch blobk before error of toast ")
       toast.error("❌ Copy Failed", {description: "Unable to copy to clipboard." });
+console.log(" inside the clipboard and catch blobk after error of toast ")
 
     }
 
