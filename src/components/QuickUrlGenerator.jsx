@@ -12,6 +12,7 @@ import {
   Facebook,
   Instagram,
   MessageSquare,
+  Mail,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -46,6 +47,7 @@ const QuickUrlGenerator = ({ projects, bitlyApiKey }) => {
   }, [projects, selectedProjectId]);
 
   const handleUrlPaste = async (e) => {
+    e.preventDefault();
     const pastedText = e.clipboardData.getData("text");
 
     if (pastedText) {
@@ -213,6 +215,9 @@ toast.success("📋 Copied!", {
 
       case "telegram":
         return `https://t.me/share/url?url=${encodedUrl}&text=${encodedText}`;
+
+      case "email":
+        return `mailto:?subject=${encodedText}&body=${encodedUrl}`;
 
       default:
         return "#";
@@ -388,6 +393,18 @@ toast.success("📋 Copied!", {
                       <path d="m22 2-7 20-4-9-9-4Z" />
                       <path d="M22 2 11 13" />
                     </svg>
+                  </Button>
+                </a>
+
+                <a
+                  href={getShareUrl("email", finalUrl, shareText)}
+                >
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="text-white hover:bg-white/20"
+                  >
+                    <Mail className="w-5 h-5" />
                   </Button>
                 </a>
               </div>
